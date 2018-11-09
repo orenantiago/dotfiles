@@ -1,7 +1,7 @@
 #!/bin/bash
-sudo apt install arandr;
-sudo apt install feh;
-
+sudo apt install arandr -y;
+sudo apt install feh -y;
+sudo apt install fonts-font-awesome -y;
 
 # dmenu-extensions
 #sudo apt-get install suckless-tools xfonts-terminus
@@ -11,11 +11,12 @@ sudo apt install feh;
 #sudo python setup.py install
 #sudo bash systemd-install.sh
 #cd ..
-
+: '
 CURENT_DIR=$(pwd)
 
 
 # font awesome
+
 if [ ! -e ~/.fonts/fontawesome-webfont.ttf ]
 then
 	cd /tmp
@@ -31,4 +32,4 @@ then
 	mv fontawesome-webfont.ttf ~/.fonts/
 	cd ~/.fonts/
 	cd "${CURRENT_DIR}"
-fi
+fi'
