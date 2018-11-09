@@ -3,14 +3,29 @@ sudo apt install arandr -y;
 sudo apt install feh -y;
 sudo apt install fonts-font-awesome -y;
 
+CURRENT_DIR=$(pwd)
+
 # dmenu-extensions
 #sudo apt-get install suckless-tools xfonts-terminus
-#cd /tmp
 #git clone git@github.com:MarkHedleyJones/dmenu-extended.git
 #cd dmenu-extended
 #sudo python setup.py install
 #sudo bash systemd-install.sh
 #cd ..
+
+# fonte do sistema
+cd /tmp
+# wget https://github.com/supermarin/YosemiteSanFranciscoFont/archive/master.zip
+# unzip master.zip
+cd YosemiteSanFranciscoFont-master
+
+if [ ! -e ~/.fonts ] 
+then
+	mkdir ~/.fonts
+fi
+
+mv *.ttf ~/.fonts/
+
 : '
 CURENT_DIR=$(pwd)
 
