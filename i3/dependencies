@@ -26,6 +26,8 @@ fi
 
 mv *.ttf ~/.fonts/
 
+sudo apt-get install lxappearance
+
 : '
 CURENT_DIR=$(pwd)
 
