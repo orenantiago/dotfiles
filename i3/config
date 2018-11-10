@@ -194,3 +194,10 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Enable tap to touchpad
 exec_always "xinput set-prop 14 297 1"
+
+
+# i3 gaps
+
+for_window [class="^.*"] border pixel 3
+gaps inner 5
+gaps outer 5
