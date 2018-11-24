@@ -37,9 +37,10 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec rofi -show run
-bindsym $mod+d exec dmenu_run
+# bindsym $mod+d exec dmenu_run
 
 # bindsym $mod+d exec "rofi -modi window,drun,run -show drun -sidebar-mode" 
+bindsym $mod+d exec "rofi -modi window,drun,run -show drun" 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -175,9 +176,13 @@ exec_always albert
 exec_always feh --bg-scale /home/renan/Pictures/wallpaper.jpg
 
 # Pulse Audio controls (Aspire-Vx5)
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
@@ -191,6 +196,12 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+# print screen
+
+bindsym --release Print exec "scrot -m '/home/renan/Pictures/screenshots/%s_%H%M_%d.%m.%Y_$wx$h.png'"
+bindsym --release Shift+Print exec "scrot -s '/home/renan/Pictures/screenshots/%s_%H%M_%d%m%Y_$wx$h.png'"
+bindsym --release $mod+Shift+Print exec "scrot -u -d 4 '/home/renan/Pictures/screenshots/%s_%H%M_%d%m%Y_$wx$h.png'"
 
 # Enable tap to touchpad
 exec_always "xinput set-prop 14 297 1"

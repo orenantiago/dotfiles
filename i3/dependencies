@@ -35,6 +35,8 @@ libev-dev libxcb-cursor-dev libxcb-xinerama0-dev \
 libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev \
 autoconf libxcb-xrm-dev
 
+sudo apt install scrot -y
+
 : '
 CURENT_DIR=$(pwd)
 
