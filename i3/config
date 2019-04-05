@@ -40,7 +40,7 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec dmenu_run
 
 # bindsym $mod+d exec "rofi -modi window,drun,run -show drun -sidebar-mode" 
-bindsym $mod+d exec "rofi -modi window,drun,run -show drun" 
+# bindsym $mod+d exec "rofi -modi window,drun,run -show drun" 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -94,7 +94,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+d focus child
 
 set $workspace9 ""
 set $workspace10 ""
@@ -127,6 +127,7 @@ for_window [class="Spotify"] move to workspace $workspace10
 
 assign [class="TelegramDesktop"] $workspace9
 assign [class="whatsapp-desktop"] $workspace9
+assign [class="Slack - wingoo"] $workspace9
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -162,12 +163,14 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-}
+#bar {
+#        status_command i3status
+#}
 
 # MY CHANGES
 bindsym $mod+shift+x exec i3lock
+
+exec --no-startup-id nm-applet
 
 # Startup Applications
 # exec spotify
@@ -209,6 +212,17 @@ exec_always "xinput set-prop 14 297 1"
 
 # i3 gaps
 
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 0
 gaps inner 5
 gaps outer 5
+smart_gaps on
+
+#suppress.focus.stealing=false
+
+
+# for_window [class="^.*"] border pixel 0
+for_window [class=albert] border pixel 0
+# gaps inner 10
+# gaps outer 2
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id compton --config $HOME/.config/.compton.conf
