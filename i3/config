@@ -96,8 +96,8 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+d focus child
 
-set $workspace9 ""
-set $workspace10 ""
+# set $workspace9 ""
+# set $workspace10 ""
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -226,3 +226,9 @@ for_window [class=albert] border pixel 0
 # gaps outer 2
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id compton --config $HOME/.config/.compton.conf
+
+exec_always --no-startup-id i3-battery-popup -n
+for_window [title="Battery Warning"] sticky enable
+
+# exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets --password-store=gnome-keyring
+exec --no-startup-id start-gnome-keyring
